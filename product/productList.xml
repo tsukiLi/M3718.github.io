@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ProductList>
+	<Product idx="1">
+		<Name>中文字</Name>
+		<Information>鳳梨酥</Information>	
+		<SamplePicPath></SamplePicPath>
+		<PictureList>
+			<PicturePath index="1">123456789</PicturePath>
+			<PicturePath index="1">123456789</PicturePath>
+			<PicturePath index="1">123456789</PicturePath>
+		</PictureList>
+	</Product>
+</ProductList>

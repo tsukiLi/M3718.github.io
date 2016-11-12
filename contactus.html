@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html> 
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="expires" content="0"> 
+
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/public.css">
+		<link rel="stylesheet" type="text/css" href="css/desktop.css" media="all and (min-width: 415px)" >
+		<link rel="stylesheet" type="text/css" href="css/mobile.css" media="all and (max-width:414px)" >
+
+		<!-- js -->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtNSzdFz56wmrzuPC2Zxx6drzBfJ0oaXI&callback=initMap"
+    async defer></script>
+		<script src="js/jq.js"></script>
+		<script>
+			var me = this;
+			var JQ = jQuery.noConflict();
+
+			function kickoff(){
+				initMap();
+			}
+			function initMap() {
+		        // Create a map object and specify the DOM element for display.
+		        var myLatLng = {lat: 25.056753, lng: 121.484191};
+		        var map = new google.maps.Map(document.getElementById('mapContainer'), {
+		          center: myLatLng,
+		          scrollwheel: true,
+		          zoom: 16
+		        });
+
+		         var marker = new google.maps.Marker({
+				    position: myLatLng,
+				    map: map,
+				    title: 'M3718'
+				 });
+    		}
+
+		</script>
+
+	</head>
+	<body onload=kickoff()>
+		<div class="contentTitle">聯絡我們 Contact Us</div>
+		<div class="contentText">
+			<h1>門市資訊
+			</h1>
+			<h2>營業時間 : 10:00 ~ 21:00
+			</h2>
+			<div id="mapContainer">
+			</div>
+			<h1>線上訂單
+			</h1>
+
+			<h2><a href="http://www.yahoo.com.tw" target="_blank">露天拍賣</a>
+			</h2>
+		</div>
+	</body>
+</html>

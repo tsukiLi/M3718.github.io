@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html> 
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="expires" content="0"> 
+
+		<!-- CSS -->
+  		<link rel="stylesheet" href="/css/lightbox.css">
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/public.css">
+		<link rel="stylesheet" type="text/css" href="css/desktop.css" media="(min-width: 415px)" >
+		<link rel="stylesheet" type="text/css" href="css/mobile.css" media="(max-width:414px)" >
+
+		<!-- js -->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtNSzdFz56wmrzuPC2Zxx6drzBfJ0oaXI&callback=initMap"
+    async defer></script>
+		<script src="js/jq.js"></script>
+		<script>
+			var me = this;
+			var JQ = jQuery.noConflict();
+			me.ProductList = {};
+
+		    me.myLatLng = {lat: 25.056753, lng: 121.484191};
+			function kickoff(){
+				initMap();
+				//loadProduct();
+				resize();
+
+				setContent("aboutus");
+			}
+
+			function initMap() {
+		        // Create a map object and specify the DOM element for display.
+		        if(me.map){
+		        	me.map = null;
+		        }
+		        me.map = new google.maps.Map(document.getElementById('mapContainer'), {
+		          center: me.myLatLng,
+		          scrollwheel: true,
+		          zoom: 16
+		        });
+		        var marker = new google.maps.Marker({
+					position: myLatLng,
+					map: me.map,
+					title: 'M3718'
+				});
+    		}
+
+			function resize(){
+				/*
+				var tmpHeight = 0;
+
+				tmpHeight+= JQ(".titleContainer").height();
+				tmpHeight+= JQ(".sliderContainer").height();
+				tmpHeight+= JQ(".middleContainer").height();
+				tmpHeight+= JQ(".footer").height();
+
+				JQ(".contentContainer").height(JQ(window).height() - tmpHeight);
+				*/
+			}
+
+			function loadProduct(){
+				/*
+				JQ.ajax({
+            		url: "product/productList.xml",
+	            	complete: function(xml,status){
+	            		var qq = "qweqwe";
+	            	},
+	            	type: 'GET',
+	            	contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+	            	async: true
+        		});
+				*/
+			}
+
+			function setContent(index){
+				JQ(".page").each(function(){
+					this.style.display =(this.id == index)?"block" :"none";
+				});
+
+
+				google.maps.event.trigger(me.map, 'resize');
+				me.map.setCenter(me.myLatLng);
+				hideflymenu();
+			}
+
+			function hideflymenu(){
+				JQ(".flyMenu").hide();
+			}
+			function showflymenu(){
+				JQ(".flyMenu").show();
+
+				var tmpHeight = Math.max( document.body.scrollHeight, document.body.offsetHeight, 
+                       document.body.clientHeight, document.body.scrollHeight, document.body.offsetHeight);
+				JQ(".flyMenu").css("height",tmpHeight+"px");
+			}
+		</script>
+	</head>
+	<body onload=kickoff() onresize=resize()>
+		<div class="spacer">
+
+			<div class="titleContainer">
+				<div class="storeIcon"></div>
+				<!--
+				<div class="webMenu">
+					<div class="menuItem" onclick=setContent('aboutus')>關於M3718</div>
+					<div class="menuItem" onclick=setContent('product')>產品資訊</div>
+					<div class="menuItem" onclick=setContent('contactus')>聯絡我們</div>
+				</div>
+
+				-->
+				<div class="menuCaller" onclick=showflymenu()>Menu</div>
+			</div>
+
+			<div class="sliderContainer">
+				<div class="menuItem" onclick=setContent('aboutus')>關於M3718</div>
+				<div class="menuItem" onclick=setContent('product')>產品資訊</div>
+				<div class="menuItem" onclick=setContent('contactus')>聯絡我們</div>
+			</div>
+
+			<div class="middleContainer"></div>
+
+
+			<div class="contentContainer">
+				<!--<iframe id="contentIframe" src='about.html'></iframe>-->
+				<div class="page" id="product">
+					<div class="contentTitle">產品資訊 Product Information</div>
+						<div class="contentText">
+							<a class="productItem" href="product/001/productPic.jpg" data-lightbox="example-set" data-title="title">
+								<img class="productPic" src="product/001/productPic.jpg" alt=""/>
+								<div class="productName">鳳梨酥</div>
+							</a>
+							<a class="productItem.hide" href="product/001/productPic.jpg" data-lightbox="example-set" data-title="title"></a>
+							<a class="productItem.hide" href="product/001/productPic.jpg" data-lightbox="example-set" data-title="title"></a>
+
+
+
+
+							<a class="productItem" href="product/002/productPic.jpg" data-lightbox="example-set-2" data-title="title">
+								<img class="productPic" src="product/002/productPic.jpg" alt=""/>
+								<div class="productName">鳳梨酥zzzzzz</div>
+							</a>
+							<a class="productItem.hide" href="product/002/productPic.jpg" data-lightbox="example-set-2" data-title="title"></a>
+							<a class="productItem.hide" href="product/002/productPic.jpg" data-lightbox="example-set-2" data-title="title"></a>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="page" id="aboutus">
+					<div class="contentTitle">關於我們 About Us</div>
+					<div class="contentText">
+						5678M3718 QQ123,QQ45678M3718 QQ123,QQ45678M3718 QQ123,QQ45678M3718 QQ123,QQ45678M3718 QQ123,QQ45678M3718 QQ123,QQ45678M3718 QQ123,QQ45678M3718 QQ123,QQ45678M3718 QQ123,QQ45678M3718 QQ123,QQ45678M3718 QQ123,QQ45678M3718 QQ123,QQ45678M3718 QQ123,QQ45678M3718 QQ123,QQ45678M3718 QQ123,QQ45678M3718 QQ123,QQ45678M3718 QQ123,QQ45678M3718 QQ123,QQ45678
+					</div>
+				</div>
+
+				<div class="page" id="contactus">
+					<div class="contentTitle">聯絡我們 Contact Us</div>
+					<div class="contentText">
+						<h1>門市資訊</h1>
+						<h2>241. 新北市三重區捷運路37巷18號</h2>
+						<h2>Tel: (02) 2985 - 0606</h2>
+						<h2>營業時間 : 10:00 ~ 21:00</h2>
+						<div id="mapContainer"></div>
+						<h1>線上訂單</h1>
+						<h2><a href="http://www.yahoo.com.tw" target="_blank">露天拍賣</a>
+						</h2>
+					</div>
+				</div>
+
+				<div class="footer">
+					<div class="textContent alignCenter">© 2016 M3718</div>
+					<div class="textContent alignCenter"></div>
+				</div>
+			</div>
+
+
+			<div class="flyMenu">
+					<div class="menuItem" onclick=setContent('aboutus')>關於M3718</div>
+					<div class="menuItem" onclick=setContent('product')>產品資訊</div>
+					<div class="menuItem" onclick=setContent('contactus')>聯絡我們</div>
+					<div class="menuItem alignCenter" onclick=hideflymenu()>back</div>
+			</div>
+		</div>
+		<script src="js/lightbox/lightbox-plus-jquery.min.js"></script>
+	</body>
+</html>
